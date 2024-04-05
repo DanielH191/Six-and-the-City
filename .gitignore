@@ -1,0 +1,9 @@
+# gitignore
+*.class
+*.jar
+*.properties
+*.p12
+*.jks*
+*.pkcs12
+/resources/images/**
+/target/

@@ -1,0 +1,164 @@
+td{
+    text-align: center;
+    white-space: nowrap;
+    margin: 1px;
+    box-sizing: border-box;
+     border: rgb(185, 186, 185) 1px solid
+}
+
+.topRowCell{
+    width: 10px;
+    text-align: center;
+    border: solid 3px #DADADA;
+    border-top: none;
+}
+
+.xButton{
+    background-color: rgb(255, 0, 0); 
+    color:white;
+    opacity: 0.97;
+    border-radius: 4px; 
+    cursor: pointer; 
+    padding-left: 5px; 
+    padding-right: 5px; 
+    margin: 1px; 
+    margin-left: 4px; 
+    margin-right: 4px;
+}
+.xButton:hover{
+    opacity: 1;
+}
+
+.oddEntry
+{
+    background-color: rgba(62, 62, 54, 0.267) ;
+    box-sizing: border-box;
+}
+
+.oddEntry .green
+{
+    background-color: rgba(83, 223, 59, 0.815) ;
+    color: white;
+}
+
+.oddEntry .gray
+{
+    background-color: rgba(68, 70, 68, 0.815) ;
+    color: white;
+}
+
+.oddEntry .grayed-out
+{
+    background-color: rgba(47, 47, 42, 0.267) ;
+    color: rgba(47, 47, 42, 0.267);
+}
+
+.oddEntry .red
+{
+    background-color: rgba(199, 27, 27, 0.815) ;
+    color: white;
+}
+
+.evenEntry
+{
+    background-color: rgba(96, 96, 84, 0.267) ;
+    box-sizing: border-box;
+}
+
+.evenEntry .green
+{
+    background-color: rgba(38, 177, 45, 0.267) ;
+    color: white;
+}
+input::placeholder {
+    color: rgb(118, 117, 117); /* Farbe des Platzhaltertexts */
+    font-style: italic; /* Kursivschriftstil für den Platzhaltertext */
+    text-align: center;
+  }
+
+.tableButton{
+    padding: 5px;
+    cursor: pointer; 
+    color: rgb(34, 34, 94); 
+    text-align: center;
+    background-color: aliceblue; 
+    box-sizing: border-box;
+    border: aliceblue solid 2px;
+    border-radius: 7px;
+}
+.tableButton:hover{
+    background-color: white;
+    border: rgb(3, 69, 130) solid 2px;
+    color: red
+}
+.tableButtonButton{
+    cursor: pointer;
+    font-size: 15px;
+    box-sizing: border-box;
+    font-weight: 400;
+    border-radius: 5px;
+    border: none;
+}
+
+.hiddenColumn{
+    display: none;
+}
+
+.tableButton+.tableButton{
+    margin-left: 15px;
+}
+
+.actionButton{
+    margin-right: 20px;
+    background-color: rgb(95, 95, 95); 
+    opacity: 0.8;
+    padding: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 9px;
+    border: none;
+}
+
+.actionButton:hover{
+    opacity: 1;
+    cursor: pointer;
+    color: white;
+}
+
+.pagination-button
+{
+    margin-left: 5px; 
+    user-select: none;
+    opacity: 0.92; 
+    cursor: pointer; 
+    background-color: rgb(105, 105, 105); 
+    font-size: 22px; 
+    padding: 6px; 
+    padding-top: 0; 
+    padding-bottom: 0; 
+    border-radius: 4px; 
+    font-weight:bold    
+}
+.disabled-pagination-button
+{
+    opacity: 0.5;
+    cursor: default;
+}
+.enabled-pagination-button:hover
+{
+    background-color: rgb(129, 129, 129);
+    opacity: 1; 
+    color:white;
+}
+
+input {
+    text-align: center; 
+    color: red; 
+    font-weight: bold;
+}
+
+tr:hover
+{
+    background-color: rgb(197, 255, 255);
+    color: rgb(7, 7, 64)
+}
