@@ -3,21 +3,25 @@ package com;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-
+@Service
 public class TextSummarizer {
 
-    @Value("open.api.key")
+    @Value("${open.api.key}")
     private String apiKey;
-    private static final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
-    public static void main(String[] args) {
+    public JsonNode getDataFromText(String text) {
         try {
+
+            // TODO maybe put the connection to openAI while starting the application
             // Specify the URL
             URL url = new URL("https://api.openai.com/v1/chat/completions");
 
@@ -29,7 +33,7 @@ public class TextSummarizer {
 
             // Set request headers
             connection.setRequestProperty("Content-Type", "application/json");
-            connection.setRequestProperty("Authorization", "Bearer apiKey"); //TODO put actual variable
+            connection.setRequestProperty("Authorization", "Bearer " + apiKey);
 
             // Enable output and input streams
             connection.setDoOutput(true);
@@ -45,7 +49,7 @@ public class TextSummarizer {
                     + "},"
                     + "{"
                     + "\"role\": \"user\","
-                    + "\"content\": \"Someone is threatening me with a knife. I am at August Bebel Strasse 88 Potsdam\""
+                    + "\"content\": \"" + text + "\""
                     + "}"
                     + "]}";
 
@@ -65,19 +69,6 @@ public class TextSummarizer {
             String inputLine;
             StringBuilder response = new StringBuilder();
 
-            /*while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
-            }
-            in.close();
-
-            // Print the response body
-            System.out.println("Response Body: " + response);
-
-            // Close the connection
-            connection.disconnect();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
             while ((inputLine = in.readLine()) != null) {
                 response.append(inputLine);
             }
@@ -85,10 +76,10 @@ public class TextSummarizer {
 
             JsonNode jnode = objectMapper.readTree(response.toString());
             System.out.println(jnode.toString());
-            //    return jnode;
+            return jnode;
         } catch (Exception e) {
             e.printStackTrace();
-            //      return null;
+            return null;
         }
     }
 }
