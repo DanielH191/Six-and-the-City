@@ -25,6 +25,9 @@ public class RequestController extends HelpingMethods {
 	public String index(
 			Model model, HttpServletRequest request) {
 
+		Incident incident = main.getIncident();
+
+		model.addAttribute("incident", incident);
 		model.addAttribute("attribut1", 1);
 		return "index";
 	}
