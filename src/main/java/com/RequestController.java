@@ -25,6 +25,7 @@ public class RequestController extends HelpingMethods {
 	public String index(
 			Model model, HttpServletRequest request) {
 
+		model.addAttribute("attribut1", 1);
 		return "index";
 	}
 
