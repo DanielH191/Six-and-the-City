@@ -31,7 +31,6 @@ public class Voice2TextService {
         String boundary = Long.toHexString(System.currentTimeMillis()); // Zufällige Grenze
         String CRLF = "\r\n"; // Zeilenumbruch im Internet-Stil
         HttpURLConnection connection = null;
-
         System.out.println("before voice to text");
 
         try {
@@ -43,7 +42,7 @@ public class Voice2TextService {
             connection.setRequestProperty("Authorization", "Bearer " + apiKey); //TODO needs to be set manually after pull
 
             try (OutputStream output = connection.getOutputStream();
-                 PrintWriter writer = new PrintWriter(new OutputStreamWriter(output, "UTF-8"), true)) {
+                    PrintWriter writer = new PrintWriter(new OutputStreamWriter(output, "UTF-8"), true)) {
 
                 // Senden der Audio-Datei
                 writer.append("--" + boundary).append(CRLF);
