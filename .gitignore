@@ -6,3 +6,5 @@
 *.pkcs12
 /resources/images/**
 /target/
+
+.idea
