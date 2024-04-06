@@ -1,50 +1,51 @@
-td{
+.attributeInput{
+    border-radius: 5px; 
+    margin-right: 20%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.inputLabel{
+    margin-right: 15px;
+}
+
+.attributeWrapper{
+    margin-bottom: 7px;
+    display: flex; 
+    justify-content: space-between; 
+    margin-left: 25%; 
+}
+
+.attributeSectionWrapper{
+   width: 70%; 
+   margin-left: 15%; 
+   background-color: rgb(240, 238, 238); 
+   border-radius: 6px; 
+   padding: 30px
+}
+
+.actionButton{
+    background-color: rgb(147, 123, 123);
+    border-radius: 7px;
+    width: 120px;
+    height: 40px;
+    color:rgb(240, 238, 238);
+    cursor: pointer;
     text-align: center;
-    white-space: nowrap;
-    margin: 1px;
-    box-sizing: border-box;
-     border: rgb(185, 186, 185) 1px solid
+    padding: 5px;
 }
 
-.topRowCell{
-    width: 10px;
-    text-align: center;
-    border: solid 3px #DADADA;
-    border-top: none;
+.actionButton.chosen{
+    background-color: rgb(144, 36, 36);
 }
 
-.xButton{
-    background-color: rgb(255, 0, 0); 
-    color:white;
-    opacity: 0.97;
-    border-radius: 4px; 
-    cursor: pointer; 
-    padding-left: 5px; 
-    padding-right: 5px; 
-    margin: 1px; 
-    margin-left: 4px; 
-    margin-right: 4px;
-}
-.xButton:hover{
-    opacity: 1;
-}
-
-.oddEntry
-{
-    background-color: rgba(62, 62, 54, 0.267) ;
-    box-sizing: border-box;
-}
-
-.oddEntry .green
-{
-    background-color: rgba(83, 223, 59, 0.815) ;
+.actionButton:hover{
+    background-color: red;
     color: white;
 }
 
-.oddEntry .gray
-{
-    background-color: rgba(68, 70, 68, 0.815) ;
-    color: white;
+.actionButton + .actionButton{
+    margin-left: 10px;
 }
 
 p + img{
