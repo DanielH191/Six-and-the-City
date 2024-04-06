@@ -19,7 +19,7 @@ public class RequestController extends HelpingMethods {
 	@Autowired
 	private Voice2TextService voice2TextService;
 
-	private final String filePath = "C:\\Users\\dhuesmann\\Desktop\\emergency_call.m4a";
+	private final String filePath = "C:\\Users\\a_n_n\\Documents\\Audioaufzeichnungen\\Emergency_call.m4a";
 
 	private Logger logger = Logger.getLogger("RequestController.java");
 	private final Main main;
@@ -36,7 +36,7 @@ public class RequestController extends HelpingMethods {
 			Model model, HttpServletRequest request) {
 		Const.addConstantsToModel(model);
 		Incident incident = main.getIncident();
-		main.addIncidentAttributesToModel(incident, model);
+		main.addIncidentAttributesToModel(getIncidentFromRecording(filePath), model);
 
 		model.addAttribute("incident", getIncidentFromRecording(filePath));
 		model.addAttribute("attribut1", 1);
