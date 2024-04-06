@@ -20,8 +20,6 @@ public class TextSummarizerService {
 
     public JsonNode getDataFromText(String text) {
         try {
-
-            // TODO maybe put the connection to openAI while starting the application
             // Specify the URL
             URL url = new URL("https://api.openai.com/v1/chat/completions");
 
@@ -45,7 +43,7 @@ public class TextSummarizerService {
                     + "\"messages\": ["
                     + "{"
                     + "\"role\": \"system\","
-                    + "\"content\": \"Filter the following for location and occurrence - separate by semicolon\""
+                    + "\"content\": \"Filter the following emergency call for location and occurrence (be detailed) - separate both by semicolon (;)! important\""
                     + "},"
                     + "{"
                     + "\"role\": \"user\","
@@ -73,9 +71,10 @@ public class TextSummarizerService {
                 response.append(inputLine);
             }
             in.close();
-
+            System.out.println("before object mapper");
             JsonNode jnode = objectMapper.readTree(response.toString());
-            //System.out.println(jnode.toString());
+            System.out.println(jnode.toString());
+            System.out.println("text summary done");
             return jnode;
         } catch (Exception e) {
             e.printStackTrace();
