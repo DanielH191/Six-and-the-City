@@ -15,7 +15,7 @@ public class Voice2TextService {
     @Value("${open.api.key}")
     private String apiKey; // Ihr OpenAI API Schlüssel
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         System.out.println("start");
         System.out.println(transcribeAudioFile());
         System.out.println("end");
@@ -24,7 +24,9 @@ public class Voice2TextService {
 
     /**
      * Sendet eine Audio-Datei an OpenAI für die Transkription.
-     * should have the file path as input param but for quick testing it's currently added in the method
+     * should have the file path as input param but for quick testing it's currently
+     * added in the method
+     * 
      * @return Die transkribierte Textantwort von OpenAI.
      */
     public static String transcribeAudioFile() {
@@ -32,7 +34,7 @@ public class Voice2TextService {
         String CRLF = "\r\n"; // Zeilenumbruch im Internet-Stil
         HttpURLConnection connection = null;
 
-        String fp = "C:\\Users\\a_n_n\\Documents\\Audioaufzeichnungen\\Aufzeichnung - Test1.m4a";
+        String fp = "C:\\Users\\dhuesmann\\Documents\\GitHub\\Six-and-the-City\\src\\main\\resources\\m.m4a";
 
         try {
             URL url = new URL("https://api.openai.com/v1/audio/translations");
@@ -40,15 +42,19 @@ public class Voice2TextService {
             connection.setRequestMethod("POST");
             connection.setDoOutput(true);
             connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
-            connection.setRequestProperty("Authorization", "Bearer "); //TODO needs to be set manually after pull
+            connection.setRequestProperty("Authorization",
+                    "Bearer"); // TODO needs to be set manually
+                               // after pull
 
             try (OutputStream output = connection.getOutputStream();
-                 PrintWriter writer = new PrintWriter(new OutputStreamWriter(output, "UTF-8"), true)) {
+                    PrintWriter writer = new PrintWriter(new OutputStreamWriter(output, "UTF-8"), true)) {
 
                 // Senden der Audio-Datei
                 writer.append("--" + boundary).append(CRLF);
                 writer.append("Content-Disposition: form-data; name=\"file\"; filename=\"" + fp + "\"").append(CRLF);
-                writer.append("Content-Type: " + Files.probeContentType(Paths.get(fp))).append(CRLF); // Automatische Bestimmung des Content-Types
+                writer.append("Content-Type: " + Files.probeContentType(Paths.get(fp))).append(CRLF); // Automatische
+                                                                                                      // Bestimmung des
+                                                                                                      // Content-Types
                 writer.append(CRLF).flush();
                 Files.copy(Paths.get(fp), output);
                 output.flush(); // Wichtig vor weiteren schriftlichen Aktionen

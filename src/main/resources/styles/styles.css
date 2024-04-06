@@ -1,27 +1,42 @@
 .attributeInput{
     border-radius: 5px; 
-    margin-right: 20%;
+    margin-right: 5%;
     display: inline-block;
     vertical-align: top;
+    padding: 6px;
+    padding-left: 6px;
+    padding-right: 6px;
+    width: 70%;
 }
 
 .inputLabel{
-    margin-right: 15px;
+    margin-right: 7px;
+    margin-top: 3px
 }
 
 .attributeWrapper{
-    margin-bottom: 7px;
+    margin-bottom: 5px;
     display: flex; 
     justify-content: space-between; 
-    margin-left: 25%; 
+    margin-left: 3%;
+}
+#map{
+
+    width: 85%; 
+    margin-left: 7.5%; 
+}
+#x{
+    width: 85%; 
+    margin-left: 7.5%; 
 }
 
 .attributeSectionWrapper{
-   width: 70%; 
-   margin-left: 15%; 
+   width: 85%; 
+   margin-left: 7.5%; 
    background-color: rgb(240, 238, 238); 
    border-radius: 6px; 
-   padding: 30px
+   padding: 30px;
+   box-shadow: 2px 2px 0 0 rgb(208, 199, 199);
 }
 
 .actionButton{
@@ -40,7 +55,7 @@
 }
 
 .actionButton:hover{
-    background-color: red;
+    background-color: rgb(92, 6, 6);
     color: white;
 }
 
@@ -50,4 +65,12 @@
 
 p + img{
     margin-left: 20px;
+}
+
+textarea{
+    resize: none;
+}
+
+input[type="checkbox"] {
+    accent-color: rgb(144, 36, 36);;
 }

@@ -8,18 +8,19 @@
         <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
         <link href="styles.css" type="text/css" rel="stylesheet">
     </head>
-    <body style="background-color: #DADADA; color: #1f201f; font-family: sans-serif;">
+    <body style="background-color: #DADADA; color: #1f201f; font-family: sans-serif; transition: 0.3s">
         <div>           
-            <div style="width: 100%; height: 40px; margin-bottom: 15px; background-color: red; font-weight: 500; display: flex; justify-content: space-between; color: rgb(240, 238, 238)">
-                <p style="margin-left: 7.5%; font-size: 22px;">Voice AId</p>
-                <p style="margin-right: 7.5%; font-size: 14px; padding-top: 10px;">Six and the City</p>
+            <div style="width: 100%; height: 60px; margin-bottom: 15px; background-color: rgb(144, 36, 36); font-weight: 500; display: flex; justify-content: space-between; color: rgb(240, 238, 238)">
+                <p style="margin-left: 7.5%; margin-top: 10px; font-size: 22px;">Voice AId</p>
+                <p style="margin-right: 7.5%; margin-top: 10px; font-size: 14px; padding-top: 10px;">Six and the City</p>
             </div>
             <div style="display: flex; margin-top: 30px;">
                 <div style="width: 50%; margin-top: 12px">
 
-                    <img src="map.png" style="width: 70%; margin-left: 15%; margin-bottom: 20px; border-radius: 7px;">
+                    <img id="map" src="map2.png" style=" margin-bottom: 20px; border-radius: 7px; 
+                    box-shadow: 2px 2px 0 0 rgb(208, 199, 199);">
 
-                    <div class="attributeSectionWrapper">
+                    <div class="attributeSectionWrapper" style="margin-bottom: 20px;">
                         <div style="display: flex; ">
                             <div class="actionButton actor chosen" onclick="triggerAction(this)">
                                 Police
@@ -45,11 +46,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div style="display: flex; justify-content: space-between; margin-top: 30px;">
-                            <div>                                
-                                <input style="margin-left: 3px; margin-top: 14px;" type="checkbox" checked>
-                                <label>Special rights</label>
-                            </div>
+                        <div style="display: flex; justify-content: end; margin-top: 30px;">
                             <div class="actionButton chosen">
                                 Trigger alarm
                             </div>
@@ -58,11 +55,11 @@
                 </div>
                 
                 <div style="width: 50%;">
-                    <div style="display: flex; justify-content: space-between; width: 70%;  margin-left: 15%">
+                    <div style="display: flex; justify-content: space-between;" id="x">
                         <p style="font-size: 25px; margin-bottom: 40px;">Emergency Call</p>
                         <div style="display: flex;">
                             <img src="clock-black.svg" style="height: 26px; margin: 6px">
-                            <p th:text="${callDuration}" style="margin-top: 8px;"></p>
+                            <p th:text="${callDuration} +' min'" style="margin-top: 8px;"></p>
                         </div>
                     </div>
 
@@ -75,14 +72,22 @@
                     
                     <div class="attributeSectionWrapper" style="margin-top: 40px;">
                         <div  class="attributeWrapper">
-                            <p class="inputLabel" th:text="${emergencyCodeLabel+ ':'}"></p>
-                            <select style="border-radius: 5px; background-color: white;" class="attributeInput">
-                                <option :forEach th:each="code : ${emergencyCodes}" th:id="'code'+${codeStat.index}" th:text="${code}" class="attributeInput"></option>
-                            </select>
+                            <p class="inputLabel" th:text="${emergencyCodeLabel+ ':'}" style="margin-right: 0; margin-top: 8px"></p>
+                            <div style="width: 75%; display: flex; justify-content: space-between; margin-bottom: 6px;">
+                                <select class="attributeInput" style="background-color: white; width: 50%; margin-right: 0;">
+                                    <option :forEach th:each="code : ${emergencyCodes}" th:id="'code'+${codeStat.index}" th:text="${code}" class="attributeInput"></option>
+                                </select>
+                                
+                                <div>                                
+                                    <input style="margin-top: 14px; margin-left: -30%; padding-right: 10%; margin-bottom: 14px; " type="checkbox" checked>
+                                    <label>Special rights</label>
+                                </div>
+                            </div>
+                            
                         </div>
                         <div class="attributeWrapper">
                             <p class="inputLabel" th:text="${descriptionLabel+ ':'}"></p>
-                            <textarea rows="6" columns="25" class="attributeInput" th:text="${description}"></textarea>
+                            <textarea rows="5" columns="25" class="attributeInput" th:text="${description}"></textarea>
                         </div>
                     </div>
                 </div> 
