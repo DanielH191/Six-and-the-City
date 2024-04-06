@@ -12,7 +12,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 @Service
-public class TextSummarizer {
+public class TextSummarizerService {
 
     @Value("${open.api.key}")
     private String apiKey;
@@ -75,7 +75,7 @@ public class TextSummarizer {
             in.close();
 
             JsonNode jnode = objectMapper.readTree(response.toString());
-            System.out.println(jnode.toString());
+            //System.out.println(jnode.toString());
             return jnode;
         } catch (Exception e) {
             e.printStackTrace();
