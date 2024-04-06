@@ -8,19 +8,97 @@
         <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
         <link href="styles.css" type="text/css" rel="stylesheet">
     </head>
-    <body style="background-color: #1f201f; color: #DADADA; font-family: sans-serif;">
-        <div>                       
-            <div>
-                Six and the City
+    <body style="background-color: #DADADA; color: #1f201f; font-family: sans-serif;">
+        <div>           
+            <div style="width: 100%; height: 40px; margin-bottom: 15px; background-color: red; font-weight: 500; display: flex; justify-content: space-between; color: rgb(240, 238, 238)">
+                <p style="margin-left: 7.5%; font-size: 22px;">Voice AId</p>
+                <p style="margin-right: 7.5%; font-size: 14px; padding-top: 10px;">Six and the City</p>
             </div>
-            <p th:text="${attribut1}"></p>
-            <p th:text="${incident.firstName}"></p>
+            <div style="display: flex; margin-top: 30px;">
+                <div style="width: 50%; margin-top: 12px">
+
+                    <img src="map.png" style="width: 70%; margin-left: 15%; margin-bottom: 20px; border-radius: 7px;">
+
+                    <div class="attributeSectionWrapper">
+                        <div style="display: flex; ">
+                            <div class="actionButton actor chosen" onclick="triggerAction(this)">
+                                Police
+                            </div>
+                            <div class="actionButton actor" onclick="triggerAction(this)" style="width: max-content;">
+                                Fire Department
+                            </div>
+                            <div class="actionButton actor" onclick="triggerAction(this)">
+                                Ambulance
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 40px;">
+                            <div onclick="triggerAction(this)" :forEach th:each="unit : ${emergencyUnits}" th:class="'actionButton emergencyUnit ' + ${unitStat.index == 0 ? 'chosen' : ''}" style="display: flex; justify-content: space-between; width: 100%; margin-left: 0; margin-top: 10px;">
+                                <p style="margin-left: 6px;" th:text="${unit.name}"></p>
+                                <div style="display: flex; margin-right: 5px;">
+                                    <p th:text="${unit.agentAmount}" style="float: right;"></p>
+                                    <p th:text="${unit.distanceInKm}+' km'"></p>
+                                    <p th:text="${unit.travelDuration}" style="float: right;"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+                            <div>                                
+                                <input style="margin-left: 3px; margin-top: 14px;" type="checkbox" checked>
+                                <label>Special rights</label>
+                            </div>
+                            <div class="actionButton chosen">
+                                Trigger alarm
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="width: 50%;">
+                    <div style="display: flex; justify-content: space-between; width: 70%;  margin-left: 15%">
+                        <p style="font-size: 25px; margin-bottom: 40px;">Emergency Call</p>
+                        <p th:text="${callDuration}" style="margin-top: 8px;"></p>
+                    </div>
+
+                    <div class="attributeSectionWrapper">
+                        <div :forEach th:each="attribute : ${attributes}" class="attributeWrapper">
+                            <p class="inputLabel" th:text="${attributeLabels[attributeStat.index]+ ':'}"></p>
+                            <input class="attributeInput" th:value="${attribute}">
+                        </div>
+                    </div>
+                    
+                    <div class="attributeSectionWrapper" style="margin-top: 40px;">
+                        <div  class="attributeWrapper">
+                            <p class="inputLabel" th:text="${emergencyCodeLabel+ ':'}"></p>
+                            <select style="border-radius: 5px; background-color: white;" class="attributeInput">
+                                <option :forEach th:each="code : ${emergencyCodes}" th:id="'code'+${codeStat.index}" th:text="${code}" class="attributeInput"></option>
+                            </select>
+                        </div>
+                        <div class="attributeWrapper">
+                            <p class="inputLabel" th:text="${descriptionLabel+ ':'}"></p>
+                            <textarea rows="6" columns="25" class="attributeInput" th:text="${description}"></textarea>
+                        </div>
+                    </div>
+                </div> 
+            </div>
         </div>
         <a id="hiddenAnker"></a>            
     </body>
     <script th:inline="javascript">
         /*<![CDATA[*/
-        let xyz = /*[[${xyz}]]*/
+        let emergencyCodes = /*[[${emergencyCodes}]]*/
 		/*]]>*/
+
+        function triggerAction(actionButton)
+        {
+            let className = actionButton.className;
+
+            document.querySelectorAll("."+className.replace("chosen","").replace("actionButton","").replace(" ","")).forEach(function(x) {
+                x.className = x.className.replace("chosen","");
+            })
+            actionButton.className += " chosen "; 
+            
+
+        }
     </script>
   </html>
