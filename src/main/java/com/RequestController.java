@@ -24,7 +24,11 @@ public class RequestController extends HelpingMethods {
 	@GetMapping("/")
 	public String index(
 			Model model, HttpServletRequest request) {
+		Const.addConstantsToModel(model);
+		Incident incident = main.getIncident();
+		main.addIncidentAttributesToModel(incident, model);
 
+		model.addAttribute("incident", incident);
 		model.addAttribute("attribut1", 1);
 		return "index";
 	}
