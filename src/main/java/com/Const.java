@@ -20,6 +20,11 @@ public class Const {
     public static final String descriptionLabel = "Description";
     public static final String emergencyCodeLabel = "Emergency code";
 
+    public static final String city = "Potsdam";
+    public static final int postalCode = 14467;
+    public static final String durationOfCall = "01:57";
+    public static final String phoneNumber = "01574183219";
+
     public static final Incident defaultIncident = new Incident("Peter",
             "Pan",
             "Sonnenstraße 5",
